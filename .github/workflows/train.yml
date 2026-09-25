@@ -13,6 +13,10 @@ on:
   schedule:
     - cron: '*/15 * * * *'
 
+# THÊM ĐOẠN NÀY ĐỂ CẤP QUYỀN GHI (PUSH) CHO GITHUB ACTIONS
+permissions:
+  contents: write
+
 jobs:
   train:
     runs-on: ubuntu-latest
