@@ -1,0 +1,38 @@
+name: Train AI Model
+
+on:
+  workflow_dispatch:
+    inputs:
+      games:
+        description: 'Số trận đấu cần train'
+        required: true
+        default: '50000'
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run AI Training
+        run: npx tsx train.ts ${{ github.event.inputs.games }}
+
+      - name: Commit and push brain.json
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add brain.json
+          git commit -m "Auto-update brain.json after training [skip ci]" || exit 0
+          git push
+          
