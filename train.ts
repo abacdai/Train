@@ -24,7 +24,6 @@ interface BrainWeights {
 const BOARD_SIZE = 5;
 const BRAIN_FILE = './brain.json';
 
-// Cấu hình bộ não ban đầu
 let brain: BrainWeights = {
   tilesWeight: 1.0,
   dotsWeight: 1.0,
@@ -33,7 +32,6 @@ let brain: BrainWeights = {
   learnedPatterns: {},
 };
 
-// Đọc bộ não cũ nếu đã tồn tại
 if (fs.existsSync(BRAIN_FILE)) {
   try {
     const rawData = fs.readFileSync(BRAIN_FILE, 'utf-8');
@@ -44,7 +42,6 @@ if (fs.existsSync(BRAIN_FILE)) {
   }
 }
 
-// 1. Khởi tạo bàn cờ 5x5 trống
 function createEmptyBoard(): CellData[][] {
   const board: CellData[][] = [];
   for (let r = 0; r < BOARD_SIZE; r++) {
@@ -61,7 +58,7 @@ function cloneBoard(board: CellData[][]): CellData[][] {
   return board.map((row) => row.map((cell) => ({ ...cell })));
 }
 
-// 2. Chuẩn hóa bàn cờ về dạng Hash chuỗi để gom nhóm và lọc trùng
+// Chuẩn hóa bàn cờ về dạng Hash để lọc trùng
 function getBoardHash(board: CellData[][]): string {
   return board
     .map((row) =>
@@ -81,7 +78,7 @@ function hasAnyCell(board: CellData[][], playerId: PlayerId): boolean {
   return false;
 }
 
-// 3. LUẬT GAME MỚI: Lượt đầu đặt ô trống (3 chấm), lượt sau chỉ đặt ô của mình (+1 chấm)
+// LUẬT GAME CHUẨN: Lượt đầu đi ô trống (3 chấm), lượt sau CHỈ ĐƯỢC đi ô của mình (+1 chấm)
 function getValidMoves(board: CellData[][], playerId: PlayerId): { row: number; col: number }[] {
   const moves: { row: number; col: number }[] = [];
   const isFirstPlacement = !hasAnyCell(board, playerId);
@@ -99,7 +96,7 @@ function getValidMoves(board: CellData[][], playerId: PlayerId): { row: number; 
   return moves;
 }
 
-// 4. MÔ PHỎNG NỔ PHÓNG DẤU CỘNG 4 HƯỚNG
+// LOGIC NỔ PHÓNG DẤU CỘNG 4 HƯỚNG
 function applyMoveAndExplode(
   board: CellData[][],
   row: number,
@@ -162,7 +159,6 @@ function applyMoveAndExplode(
   return simBoard;
 }
 
-// 5. KIỂM TRA THẮNG THUA
 function checkWinner(board: CellData[][], movesCount: number): PlayerId | null {
   if (movesCount <= 2) return null;
 
@@ -174,7 +170,6 @@ function checkWinner(board: CellData[][], movesCount: number): PlayerId | null {
   return null;
 }
 
-// 6. ĐÁNH GIÁ THẾ CỜ (EVALUATION FUNCTION)
 function evaluateBoard(board: CellData[][], playerId: PlayerId): number {
   let score = 0;
   for (let r = 0; r < BOARD_SIZE; r++) {
@@ -190,13 +185,13 @@ function evaluateBoard(board: CellData[][], playerId: PlayerId): number {
   return score;
 }
 
-// 7. BỘ LỌC VÀ LÀM SẠCH BRAIN (Lọc trùng và loại bỏ thế cờ rác/kém hiệu quả)
+// BỘ LỌC VÀ TỐI ƯU BRAIN (Tự động lọc trùng và loại bỏ các thế cờ kém hiệu quả)
 function cleanAndFilterBrain() {
   const initialCount = Object.keys(brain.learnedPatterns).length;
   const filteredPatterns: Record<string, PatternMemory> = {};
 
   for (const [hash, pattern] of Object.entries(brain.learnedPatterns)) {
-    // Chỉ giữ lại thế cờ có nước đi mang lại tỉ lệ thắng cao hoặc được kiểm chứng nhiều lần
+    // Chỉ giữ lại những thế cờ có nước đi mang lại tỷ lệ thắng dương hoặc được thử nghiệm đủ tốt
     if (pattern.bestCounterMove && (pattern.wins >= pattern.losses || pattern.wins >= 3)) {
       filteredPatterns[hash] = pattern;
     }
@@ -204,17 +199,15 @@ function cleanAndFilterBrain() {
 
   brain.learnedPatterns = filteredPatterns;
   const finalCount = Object.keys(brain.learnedPatterns).length;
-  console.log(
-    `🧹 [BỘ LỌC BRAIN]: Đã tinh lọc bộ nhớ từ ${initialCount.toLocaleString()} -> ${finalCount.toLocaleString()} thế cờ tối ưu.`
-  );
+  console.log(`🧹 [BỘ LỌC BRAIN]: Đã tinh lọc bộ nhớ từ ${initialCount.toLocaleString()} -> ${finalCount.toLocaleString()} thế cờ tối ưu.`);
 }
 
-// 8. HÀM CHẠY HUẤN LUYỆN 1 CHU KỲ
 function runTraining(targetGames: number) {
+  console.log(`🚀 Kích hoạt chế độ AI Tự Học Siêu Cấp với ${targetGames.toLocaleString()} trận...`);
   let p1Wins = 0;
 
-  // Tỷ lệ thử nghiệm nước đi ngẫu nhiên để mở rộng phát hiện các thế cờ mới
-  let explorationRate = 0.25;
+  // Tỷ lệ thử nghiệm nước đi ngẫu nhiên để khám phá (Exploration Rate)
+  let explorationRate = 0.3;
 
   for (let game = 1; game <= targetGames; game++) {
     let board = createEmptyBoard();
@@ -232,11 +225,11 @@ function runTraining(targetGames: number) {
       const currentHash = getBoardHash(board);
       let selectedMove = validMoves[0];
 
-      // TỰ HỌC / TỰ SAI: AI thử ngẫu nhiên để tìm ra cách đánh độc lạ
+      // THỬ NGHIỆM: Đôi khi AI chọn đi ngẫu nhiên để thử các phương án mới
       if (Math.random() < explorationRate) {
         selectedMove = validMoves[Math.floor(Math.random() * validMoves.length)];
       } else {
-        // TỰ HOÀN THIỆN: Lựa chọn nước đi tối ưu nhất theo kinh nghiệm đã học
+        // TỐI ƯU: AI chọn nước đi dựa trên kinh nghiệm từ bộ não
         let bestScore = -Infinity;
         const knownPattern = brain.learnedPatterns[currentHash];
 
@@ -250,7 +243,7 @@ function runTraining(targetGames: number) {
             knownPattern.bestCounterMove.row === move.row &&
             knownPattern.bestCounterMove.col === move.col
           ) {
-            moveScore += 50.0; // Điểm thưởng lớn cho phản công đỉnh cao
+            moveScore += 50.0; // Điểm thưởng lớn cho thế cờ đã từng chứng minh thắng lợi
           }
 
           if (moveScore > bestScore) {
@@ -268,7 +261,7 @@ function runTraining(targetGames: number) {
       if (winner || movesCount > 250) {
         if (winner === 'p1') p1Wins++;
 
-        // Cập nhật bộ nhớ sau khi có kết quả
+        // HỌC TẬP VÀ RÚT KINH NGHIỆM: Cập nhật kết quả trận đấu cho cả 2 bên
         if (winner) {
           for (const step of gameHistory) {
             if (!brain.learnedPatterns[step.hash]) {
@@ -278,7 +271,7 @@ function runTraining(targetGames: number) {
             const patternData = brain.learnedPatterns[step.hash];
             if (step.player === winner) {
               patternData.wins++;
-              patternData.bestCounterMove = step.move;
+              patternData.bestCounterMove = step.move; // Ghi nhớ nước đi chiến thắng
             } else {
               patternData.losses++;
             }
@@ -292,56 +285,26 @@ function runTraining(targetGames: number) {
 
     brain.totalGamesTrained++;
 
-    // Giảm dần độ ngẫu nhiên theo thời gian
+    // Giảm dần tỷ lệ thử nghiệm ngẫu nhiên theo thời gian
     if (explorationRate > 0.05) {
       explorationRate *= 0.9999;
     }
 
-    const logInterval = Math.max(1, Math.floor(targetGames / 5));
+    // In tiến độ và chạy lọc dữ liệu định kỳ
+    const logInterval = Math.max(1, Math.floor(targetGames / 10));
     if (game % logInterval === 0 || game === targetGames) {
       console.log(
-        `  -> Tiến độ: ${game}/${targetGames} trận | P1 Thắng: ${(
-          (p1Wins / game) *
-          100
-        ).toFixed(1)}% | Thế cờ đã ghi nhớ: ${Object.keys(
-          brain.learnedPatterns
-        ).length.toLocaleString()}`
+        `[Trận ${game}/${targetGames}] | P1 Thắng: ${((p1Wins / game) * 100).toFixed(1)}% | Thế cờ đã lưu: ${Object.keys(brain.learnedPatterns).length.toLocaleString()}`
       );
     }
   }
 
-  // Tự động lọc bớt các thế cờ rác sau khi kết thúc chu kỳ
+  // Chạy bộ lọc loại bỏ các thế cờ trùng/kém trước khi lưu
   cleanAndFilterBrain();
 
-  // Ghi đè bộ não xuống ổ đĩa
   fs.writeFileSync(BRAIN_FILE, JSON.stringify(brain, null, 2));
-  console.log(`💾 [LƯU THÀNH CÔNG]: Bộ não đã được ghi vào file ${BRAIN_FILE}`);
+  console.log(`\n💾 Đã lưu bộ não nâng cấp vào file ${BRAIN_FILE}`);
 }
 
-// 9. VÒNG LẮP HUẤN LUYỆN VĨNH VIỄN
-async function startInfiniteTraining() {
-  const batchSize = parseInt(process.argv[2], 10) || 10000;
-  let cycle = 1;
-
-  console.log(`\n======================================================`);
-  console.log(`⚡ KÍCH HOẠT CHẾ ĐỘ TRAIN AI VĨNH VIỄN SIÊU CẤP`);
-  console.log(`📦 Quy mô mỗi chu kỳ: ${batchSize.toLocaleString()} trận`);
-  console.log(`💡 Bấm Ctrl + C bất kỳ lúc nào để dừng mà KHÔNG mất dữ liệu`);
-  console.log(`======================================================\n`);
-
-  while (true) {
-    console.log(`🔄 [CHU KỲ ${cycle}] Bắt đầu huấn luyện...`);
-    runTraining(batchSize);
-
-    console.log(
-      `✅ Hoàn tất chu kỳ ${cycle}. Tổng tích lũy: ${brain.totalGamesTrained.toLocaleString()} trận.`
-    );
-    console.log(`⏳ Tạm nghỉ 3 giây giải phóng tài nguyên...\n`);
-
-    cycle++;
-    await new Promise((resolve) => setTimeout(resolve, 3000));
-  }
-}
-
-// Kích hoạt chương trình
-startInfiniteTraining();
+const inputGames = parseInt(process.argv[2], 10) || 50000;
+runTraining(inputGames);
