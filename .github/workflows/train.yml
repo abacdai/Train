@@ -1,38 +1,51 @@
-name: Train AI Model
+name: Continuous AI Training 1M
 
 on:
+  # Cho phép bấm nút chạy thủ công bất cứ lúc nào trên web GitHub
   workflow_dispatch:
     inputs:
       games:
-        description: 'Số trận đấu cần train'
+        description: 'Số trận cho mỗi đợt train'
         required: true
-        default: '50000'
+        default: '1000000'
+
+  # TỰ ĐỘNG HẸN GIỜ: Cứ mỗi 15 phút GitHub sẽ tự động kích hoạt train 1 lần
+  schedule:
+    - cron: '*/15 * * * *'
 
 jobs:
   train:
     runs-on: ubuntu-latest
 
     steps:
+      # Bước 1: Tải mã nguồn từ repository xuống máy chủ ảo
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Bước 2: Cài đặt môi trường Node.js phiên bản 20
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # Bước 3: Cài đặt các thư viện cần thiết (typescript, tsx,...)
       - name: Install dependencies
         run: npm install
 
-      - name: Run AI Training
-        run: npx tsx train.ts ${{ github.event.inputs.games }}
-
-      - name: Commit and push brain.json
+      # Bước 4: Chạy file train.ts với mặc định 1.000.000 trận
+      - name: Run AI Training (1M Games)
         run: |
-          git config --global user.name "github-actions[bot]"
+          GAMES_COUNT="${{ github.event.inputs.games }}"
+          if [ -z "$GAMES_COUNT" ]; then
+            GAMES_COUNT="1000000"
+          fi
+          echo "Bắt đầu train đợt này với $GAMES_COUNT trận..."
+          npx tsx train.ts $GAMES_COUNT
+
+      # Bước 5: Tự động lưu và đẩy file brain.json mới nhất lên GitHub
+      - name: Commit and push updated brain.json
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add brain.json
-          git commit -m "Auto-update brain.json after training [skip ci]" || exit 0
-          git push
-          
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-train 1M: Update brain.json [skip ci]" && git push)
