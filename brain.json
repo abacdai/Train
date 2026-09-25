@@ -2,50 +2,50 @@
   "tilesWeight": 1,
   "dotsWeight": 1,
   "explodingWeight": 2,
-  "totalGamesTrained": 1000000,
+  "totalGamesTrained": 2000000,
   "learnedPatterns": {
     "00000-00000-00000-00000-00000": {
-      "wins": 127026,
-      "losses": 1000000,
+      "wins": 257464,
+      "losses": 2000000,
       "bestCounterMove": {
-        "row": 2,
-        "col": 3
-      }
-    },
-    "130000-00000-00000-00000-00000": {
-      "wins": 55302,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 3,
+        "row": 4,
         "col": 0
       }
     },
-    "00000-00000-00000-130000-00000": {
-      "wins": 42126,
+    "130000-00000-00000-00000-00000": {
+      "wins": 100381,
       "losses": 0,
       "bestCounterMove": {
-        "row": 0,
-        "col": 3
+        "row": 2,
+        "col": 2
+      }
+    },
+    "00000-00000-00000-130000-00000": {
+      "wins": 87137,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 1
       }
     },
     "00000-00000-00000-00000-001300": {
-      "wins": 43559,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
-        "col": 3
-      }
-    },
-    "00000-00000-000013-00000-00000": {
-      "wins": 37355,
+      "wins": 84266,
       "losses": 0,
       "bestCounterMove": {
         "row": 3,
         "col": 2
       }
     },
+    "00000-00000-000013-00000-00000": {
+      "wins": 73851,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 2,
+        "col": 2
+      }
+    },
     "00000-00000-00000-000130-00000": {
-      "wins": 32478,
+      "wins": 66737,
       "losses": 0,
       "bestCounterMove": {
         "row": 3,
@@ -53,7 +53,7 @@
       }
     },
     "013000-00000-00000-00000-00000": {
-      "wins": 38246,
+      "wins": 81835,
       "losses": 0,
       "bestCounterMove": {
         "row": 0,
@@ -61,103 +61,103 @@
       }
     },
     "00000-00000-00000-001300-00000": {
-      "wins": 32583,
+      "wins": 65102,
       "losses": 0,
       "bestCounterMove": {
         "row": 2,
-        "col": 2
+        "col": 4
       }
     },
     "00000-00000-00000-00000-130000": {
-      "wins": 47677,
+      "wins": 109245,
       "losses": 0,
       "bestCounterMove": {
-        "row": 4,
-        "col": 1
+        "row": 0,
+        "col": 4
       }
     },
     "00000-001300-00000-00000-00000": {
-      "wins": 35547,
+      "wins": 65659,
       "losses": 0,
       "bestCounterMove": {
-        "row": 2,
+        "row": 3,
         "col": 2
       }
     },
     "00000-00000-00000-013000-00000": {
-      "wins": 30281,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
-        "col": 2
-      }
-    },
-    "00000-00000-00000-00000-000130": {
-      "wins": 39284,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
-        "col": 2
-      }
-    },
-    "00000-000130-00000-00000-00000": {
-      "wins": 32574,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 2,
-        "col": 0
-      }
-    },
-    "00000-00000-00000-00000-000013": {
-      "wins": 62969,
+      "wins": 62898,
       "losses": 0,
       "bestCounterMove": {
         "row": 0,
-        "col": 0
+        "col": 1
+      }
+    },
+    "00000-00000-00000-00000-000130": {
+      "wins": 74537,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 3
+      }
+    },
+    "00000-000130-00000-00000-00000": {
+      "wins": 71193,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 0,
+        "col": 3
+      }
+    },
+    "00000-00000-00000-00000-000013": {
+      "wins": 121907,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 4
       }
     },
     "00000-000013-00000-00000-00000": {
-      "wins": 44886,
+      "wins": 85521,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    "00000-00000-001300-00000-00000": {
+      "wins": 67463,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 4,
+        "col": 4
+      }
+    },
+    "00000-00000-000130-00000-00000": {
+      "wins": 71187,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 3
+      }
+    },
+    "00000-013000-00000-00000-00000": {
+      "wins": 64619,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 4,
+        "col": 0
+      }
+    },
+    "00000-00000-00000-00000-013000": {
+      "wins": 75860,
       "losses": 0,
       "bestCounterMove": {
         "row": 3,
         "col": 1
       }
     },
-    "00000-00000-001300-00000-00000": {
-      "wins": 33966,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 2,
-        "col": 1
-      }
-    },
-    "00000-00000-000130-00000-00000": {
-      "wins": 37187,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 1,
-        "col": 2
-      }
-    },
-    "00000-013000-00000-00000-00000": {
-      "wins": 34357,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 0,
-        "col": 1
-      }
-    },
-    "00000-00000-00000-00000-013000": {
-      "wins": 36865,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 0,
-        "col": 0
-      }
-    },
     "000013-00000-00000-00000-00000": {
-      "wins": 54761,
+      "wins": 105791,
       "losses": 0,
       "bestCounterMove": {
         "row": 1,
@@ -165,47 +165,47 @@
       }
     },
     "000130-00000-00000-00000-00000": {
-      "wins": 43272,
+      "wins": 75993,
       "losses": 0,
       "bestCounterMove": {
-        "row": 1,
-        "col": 3
+        "row": 2,
+        "col": 0
       }
     },
     "001300-00000-00000-00000-00000": {
-      "wins": 39236,
+      "wins": 80842,
       "losses": 0,
       "bestCounterMove": {
-        "row": 1,
-        "col": 2
+        "row": 0,
+        "col": 1
       }
     },
     "00000-00000-130000-00000-00000": {
-      "wins": 31430,
+      "wins": 76004,
       "losses": 0,
       "bestCounterMove": {
         "row": 1,
-        "col": 3
+        "col": 0
       }
     },
     "00000-00000-013000-00000-00000": {
-      "wins": 33134,
+      "wins": 63627,
       "losses": 0,
       "bestCounterMove": {
-        "row": 4,
-        "col": 4
+        "row": 2,
+        "col": 2
       }
     },
     "00000-00000-00000-000013-00000": {
-      "wins": 37098,
+      "wins": 84124,
       "losses": 0,
       "bestCounterMove": {
-        "row": 3,
-        "col": 3
+        "row": 2,
+        "col": 4
       }
     },
     "00000-130000-00000-00000-00000": {
-      "wins": 43827,
+      "wins": 84221,
       "losses": 0,
       "bestCounterMove": {
         "row": 1,
