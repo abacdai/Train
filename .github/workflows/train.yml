@@ -11,7 +11,7 @@ on:
 
   # TỰ ĐỘNG HẸN GIỜ: Cứ mỗi 15 phút GitHub sẽ tự động kích hoạt train 1 lần
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/5 * * * *'
 
 # THÊM ĐOẠN NÀY ĐỂ CẤP QUYỀN GHI (PUSH) CHO GITHUB ACTIONS
 permissions:
