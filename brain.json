@@ -2,34 +2,34 @@
   "tilesWeight": 1,
   "dotsWeight": 1,
   "explodingWeight": 2,
-  "totalGamesTrained": 3000000,
+  "totalGamesTrained": 4000000,
   "learnedPatterns": {
     "00000-00000-00000-00000-00000": {
-      "wins": 385573,
-      "losses": 3000000,
+      "wins": 515374,
+      "losses": 4000000,
       "bestCounterMove": {
-        "row": 0,
+        "row": 3,
         "col": 4
       }
     },
     "130000-00000-00000-00000-00000": {
-      "wins": 161764,
+      "wins": 215352,
       "losses": 0,
       "bestCounterMove": {
-        "row": 1,
-        "col": 0
+        "row": 0,
+        "col": 1
       }
     },
     "00000-00000-00000-130000-00000": {
-      "wins": 132024,
+      "wins": 172734,
       "losses": 0,
       "bestCounterMove": {
-        "row": 1,
-        "col": 4
+        "row": 2,
+        "col": 0
       }
     },
     "00000-00000-00000-00000-001300": {
-      "wins": 118854,
+      "wins": 160216,
       "losses": 0,
       "bestCounterMove": {
         "row": 3,
@@ -37,39 +37,39 @@
       }
     },
     "00000-00000-000013-00000-00000": {
-      "wins": 110134,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 1,
-        "col": 2
-      }
-    },
-    "00000-00000-00000-000130-00000": {
-      "wins": 98589,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
-        "col": 3
-      }
-    },
-    "013000-00000-00000-00000-00000": {
-      "wins": 124140,
+      "wins": 147195,
       "losses": 0,
       "bestCounterMove": {
         "row": 3,
-        "col": 1
+        "col": 4
+      }
+    },
+    "00000-00000-00000-000130-00000": {
+      "wins": 129085,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 4
+      }
+    },
+    "013000-00000-00000-00000-00000": {
+      "wins": 166728,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 0,
+        "col": 3
       }
     },
     "00000-00000-00000-001300-00000": {
-      "wins": 99914,
+      "wins": 130101,
       "losses": 0,
       "bestCounterMove": {
-        "row": 2,
-        "col": 2
+        "row": 3,
+        "col": 4
       }
     },
     "00000-00000-00000-00000-130000": {
-      "wins": 158485,
+      "wins": 205720,
       "losses": 0,
       "bestCounterMove": {
         "row": 3,
@@ -77,139 +77,139 @@
       }
     },
     "00000-001300-00000-00000-00000": {
-      "wins": 94001,
+      "wins": 123176,
       "losses": 0,
       "bestCounterMove": {
-        "row": 1,
-        "col": 1
+        "row": 2,
+        "col": 2
       }
     },
     "00000-00000-00000-013000-00000": {
-      "wins": 106327,
+      "wins": 139801,
       "losses": 0,
       "bestCounterMove": {
         "row": 2,
-        "col": 0
+        "col": 1
       }
     },
     "00000-00000-00000-00000-000130": {
-      "wins": 110579,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 3,
-        "col": 3
-      }
-    },
-    "00000-000130-00000-00000-00000": {
-      "wins": 101470,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 2,
-        "col": 3
-      }
-    },
-    "00000-00000-00000-00000-000013": {
-      "wins": 183425,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 0,
-        "col": 0
-      }
-    },
-    "00000-000013-00000-00000-00000": {
-      "wins": 116945,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 1,
-        "col": 0
-      }
-    },
-    "00000-00000-001300-00000-00000": {
-      "wins": 109611,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 1,
-        "col": 3
-      }
-    },
-    "00000-00000-000130-00000-00000": {
-      "wins": 102158,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 3,
-        "col": 3
-      }
-    },
-    "00000-013000-00000-00000-00000": {
-      "wins": 99286,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 3,
-        "col": 4
-      }
-    },
-    "00000-00000-00000-00000-013000": {
-      "wins": 109981,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
-        "col": 0
-      }
-    },
-    "000013-00000-00000-00000-00000": {
-      "wins": 163247,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 1,
-        "col": 4
-      }
-    },
-    "000130-00000-00000-00000-00000": {
-      "wins": 117528,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
-        "col": 4
-      }
-    },
-    "001300-00000-00000-00000-00000": {
-      "wins": 123938,
+      "wins": 158667,
       "losses": 0,
       "bestCounterMove": {
         "row": 1,
         "col": 2
       }
     },
-    "00000-00000-130000-00000-00000": {
-      "wins": 118729,
+    "00000-000130-00000-00000-00000": {
+      "wins": 134910,
       "losses": 0,
       "bestCounterMove": {
-        "row": 1,
-        "col": 0
+        "row": 0,
+        "col": 3
       }
     },
-    "00000-00000-013000-00000-00000": {
-      "wins": 92714,
+    "00000-00000-00000-00000-000013": {
+      "wins": 238050,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 2
+      }
+    },
+    "00000-000013-00000-00000-00000": {
+      "wins": 163095,
       "losses": 0,
       "bestCounterMove": {
         "row": 2,
-        "col": 0
-      }
-    },
-    "00000-00000-00000-000013-00000": {
-      "wins": 125820,
-      "losses": 0,
-      "bestCounterMove": {
-        "row": 4,
         "col": 4
       }
     },
-    "00000-130000-00000-00000-00000": {
-      "wins": 120337,
+    "00000-00000-001300-00000-00000": {
+      "wins": 138939,
       "losses": 0,
       "bestCounterMove": {
         "row": 2,
         "col": 3
+      }
+    },
+    "00000-00000-000130-00000-00000": {
+      "wins": 133486,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 1,
+        "col": 3
+      }
+    },
+    "00000-013000-00000-00000-00000": {
+      "wins": 132509,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 1,
+        "col": 2
+      }
+    },
+    "00000-00000-00000-00000-013000": {
+      "wins": 154109,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    "000013-00000-00000-00000-00000": {
+      "wins": 216035,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 4,
+        "col": 1
+      }
+    },
+    "000130-00000-00000-00000-00000": {
+      "wins": 162345,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 2,
+        "col": 0
+      }
+    },
+    "001300-00000-00000-00000-00000": {
+      "wins": 160863,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 0,
+        "col": 1
+      }
+    },
+    "00000-00000-130000-00000-00000": {
+      "wins": 160424,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 3,
+        "col": 0
+      }
+    },
+    "00000-00000-013000-00000-00000": {
+      "wins": 128410,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 1,
+        "col": 1
+      }
+    },
+    "00000-00000-00000-000013-00000": {
+      "wins": 164354,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 0,
+        "col": 2
+      }
+    },
+    "00000-130000-00000-00000-00000": {
+      "wins": 163696,
+      "losses": 0,
+      "bestCounterMove": {
+        "row": 4,
+        "col": 4
       }
     }
   }
